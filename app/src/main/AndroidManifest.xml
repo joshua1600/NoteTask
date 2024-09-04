@@ -13,9 +13,24 @@
         android:theme="@style/Theme.NoteTask"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
-            android:label="NoteTask"
+            android:name=".Verification"
             android:exported="false" />
+        <activity
+            android:name=".ResetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:label="NoteTask" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
