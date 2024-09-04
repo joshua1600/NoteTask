@@ -15,7 +15,7 @@
         android:text="NoteTask"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/ColorMenuBar"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="32dp"/>
 
@@ -26,8 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Remember, effortlessly."
         android:textSize="16sp"
-        android:textColor="@color/ColorAccent"
-        android:layout_gravity="center_horizontal"
+        android:textColor="@color/ColorMenuBar"
         android:paddingBottom="8dp"/>
 
     <!-- Sign In Instruction -->
@@ -37,8 +36,7 @@
         android:layout_height="wrap_content"
         android:text="Sign in to your NoteTask account"
         android:textSize="14sp"
-        android:textColor="@color/black"
-        android:layout_gravity="center_horizontal"
+        android:textColor="@color/ColorPrimaryDark"
         android:paddingBottom="16dp"/>
 
     <!-- Username EditText -->
@@ -52,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:background="@color/ColorPrimaryDark" />
+            android:background="@color/ColorAccent" />
         <!--android:drawableStart="@drawable/ic_username"-->
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -68,9 +66,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:drawableStart="@drawable/ic_password"
+            android:drawableStart="@drawable/password_lock"
             android:inputType="textPassword"
-            android:background="@color/ColorPrimaryDark" />
+            android:background="@color/ColorAccent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Forgot Password -->
@@ -87,29 +85,28 @@
         android:padding="16dp"
         android:paddingBottom="24dp"
         android:text="Forgot password?"
-        android:textColor="@color/ColorPrimaryDark"
+        android:textColor="@color/ColorMenuBar"
         android:textSize="14sp"
         android:textStyle="italic" />
 
+    <!-- Register Button -->
     <Button
         android:id="@+id/LoginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:backgroundTint="@color/ColorAccent"
-        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_bg_selector"
+        android:textColor="@color/ColorMenuBar"
         android:padding="12dp"
-        android:layout_marginBottom="8dp" />
+        android:text="Sign In" />
 
-    <!-- Register Button -->
     <Button
         android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:backgroundTint="@color/ColorAccent"
-        android:textColor="@color/white"
+        android:background="@drawable/btn_shape_round"
         android:layout_gravity="center_horizontal"
         android:padding="12dp" />
 </LinearLayout>
