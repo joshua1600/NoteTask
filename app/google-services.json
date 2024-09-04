@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1039843044035",
+    "project_id": "notetask-c3eae",
+    "storage_bucket": "notetask-c3eae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039843044035:android:618d7ca7bcafdad9f19076",
+        "android_client_info": {
+          "package_name": "my.edu.utar.loginpage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkFSfo9NaoDN9d0lWw6ZDm7T5ED3UBXHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039843044035:android:dd3de681b20fd7f4f19076",
+        "android_client_info": {
+          "package_name": "my.edu.utar.notetask"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkFSfo9NaoDN9d0lWw6ZDm7T5ED3UBXHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
