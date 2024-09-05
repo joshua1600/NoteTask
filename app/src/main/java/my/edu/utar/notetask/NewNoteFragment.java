@@ -6,10 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -53,8 +58,19 @@ public class NewNoteFragment extends Fragment {
         // Create a new note object
         Note note = new Note(subject, content);
 
-        // Add note to database
-        notesRef.push().setValue(note);
+        //Add note to database (include show feedback)
+        notesRef.push().setValue(note, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                if (error != null ){
+                    //if save file fails, show error message
+                    Toast.makeText(getActivity(), "Failed to save note: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    //If save successful, show successful message
+                    Toast.makeText(getActivity(), "Note saved successfully!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
