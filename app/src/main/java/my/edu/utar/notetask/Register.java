@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,8 @@ public class Register extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
 
+    private TextView gobacktologin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,16 @@ public class Register extends AppCompatActivity {
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
         Button registerButton = findViewById(R.id.register_button);
+        gobacktologin = findViewById(R.id.gotologin);
+
+        gobacktologin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Register.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance();

@@ -3,21 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/ColorAccent"
+    android:background="@color/ColorPrimary"
     android:padding="16dp"
     tools:context=".Register">
 
     <!-- App Name -->
     <TextView
-        android:id="@+id/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@id/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:text="NoteTask"
-        android:textSize="24sp"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:letterSpacing="0.5"
+        android:layout_margin="12dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="32dp"/>
+        android:textColor="@color/white"
+        android:background="@drawable/app_name_border"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Space to create a gap -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3" />
 
     <!-- Register Prompt -->
     <TextView
@@ -26,9 +35,10 @@
         android:layout_height="wrap_content"
         android:text="Register your NoteTask account"
         android:textSize="16sp"
-        android:textColor="@color/black"
+        android:letterSpacing="0.1"
+        android:textColor="@color/ColorAccent"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="8dp"/>
+        android:paddingBottom="10dp"/>
 
     <!-- Username EditText -->
     <com.google.android.material.textfield.TextInputLayout
@@ -40,9 +50,10 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:hint="Username"
-            android:background="@color/white"/>
+            android:background="@color/ColorAccent"/>
         <!--android:drawableStart="@drawable/ic_username"-->
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,8 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:background="@color/white"
-            android:textColor="@color/black"/>
+            android:background="@color/ColorAccent"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
         <!--android:drawableStart="@drawable/ic_email"-->
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,29 +86,63 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:background="@color/ColorAccent"/>
         <!--android:drawableStart="@drawable/ic_password"-->
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <!-- Password Requirements -->
     <TextView
         android:id="@+id/password_requirements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="@color/white"
-        android:paddingBottom="24dp"
+        android:textSize="14sp"
+        android:textColor="@color/ColorAccent"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:text="Create a password for your account. Your password must:\n• have a minimum of 12 characters\n• include at least one number\n• include upper and lower case letters\n• include at least one special character" />
 
+    <!-- Space to create a gap -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <!-- Register Button -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/register_button"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:text="Register"
+        android:background="@drawable/btn_shape_round"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:padding="12dp" />
+
+    <!-- Space to create a gap -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8" />
+
+    <TextView
+        android:id="@id/gotologin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:backgroundTint="@color/ColorMenuBar"
-        android:textColor="@color/white"
-        android:layout_gravity="center_horizontal"
-        android:padding="12dp" />
+        android:text="Already have an account? Sign in"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textColor="@color/ColorMenuBar"
+        />
+
+    <!-- Space to push buttons to the bottom -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3" />
 </LinearLayout>

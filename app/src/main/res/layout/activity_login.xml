@@ -3,21 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/ColorPrimary"
     android:padding="16dp"
     tools:context=".LoginActivity">
 
     <!-- App Name -->
     <TextView
         android:id="@+id/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:text="NoteTask"
-        android:textSize="24sp"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:letterSpacing="0.5"
+        android:layout_margin="12dp"
         android:textStyle="bold"
-        android:textColor="@color/ColorMenuBar"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="32dp"/>
+        android:textColor="@color/white"
+        android:background="@drawable/app_name_border"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Space to create a gap -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <!-- Sign In Prompt -->
     <TextView
@@ -25,8 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Remember, effortlessly."
-        android:textSize="16sp"
-        android:textColor="@color/ColorMenuBar"
+        android:textSize="22sp"
+        android:textColor="@color/ColorAccent"
+        android:textStyle="bold"
         android:paddingBottom="8dp"/>
 
     <!-- Sign In Instruction -->
@@ -35,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign in to your NoteTask account"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textColor="@color/ColorPrimaryDark"
         android:paddingBottom="16dp"/>
 
@@ -50,8 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:background="@color/ColorAccent" />
-        <!--android:drawableStart="@drawable/ic_username"-->
+            android:background="@color/ColorAccent"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,15 +77,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:drawableStart="@drawable/password_lock"
             android:inputType="textPassword"
-            android:background="@color/ColorAccent" />
+            android:background="@color/ColorAccent"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+        <!--android:drawableStart="@drawable/password_lock"-->
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Forgot Password -->
-
-
-    <!-- Sign In Button -->
     <TextView
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
@@ -86,27 +97,51 @@
         android:paddingBottom="24dp"
         android:text="Forgot password?"
         android:textColor="@color/ColorMenuBar"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="italic" />
 
-    <!-- Register Button -->
-    <Button
-        android:id="@+id/LoginBtn"
+    <!-- Space to create a gap -->
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Sign In Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/LoginBtn"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_bg_selector"
         android:textColor="@color/ColorMenuBar"
         android:padding="12dp"
-        android:text="Sign In" />
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:textSize="16sp"/>
 
-    <Button
-        android:id="@+id/register_button"
+    <!-- Space to create a gap -->
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.3" />
+
+    <!-- Register Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/register_button"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
         android:text="Register"
         android:background="@drawable/btn_shape_round"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:textAllCaps="false"
+        android:textSize="16sp"/>
+
+    <!-- Space to push buttons to the bottom -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>

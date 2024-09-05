@@ -11,7 +11,6 @@
     </item>
     <item>
         <shape android:shape="rectangle">
-            <gradient android:startColor="@color/ColorMenuBar" android:endColor="@color/ColorMenuBar"/>
             <solid android:color="@color/ColorMenuBar"/>
             <stroke
                 android:width="2dp"
