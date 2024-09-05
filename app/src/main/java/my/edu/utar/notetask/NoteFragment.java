@@ -1,15 +1,17 @@
 package my.edu.utar.notetask;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.ImageView;
 
-import java.io.Serializable;
+
+import com.bumptech.glide.Glide;
+
 
 public class NoteFragment extends Fragment {
 
@@ -44,10 +46,14 @@ public class NoteFragment extends Fragment {
 
         TextView titleTextView = view.findViewById(R.id.noteTitleTextView);
         TextView contentTextView = view.findViewById(R.id.noteContentTextView);
+        ImageView noteImageView = view.findViewById(R.id.noteImageView);
 
         if (note != null) {
             titleTextView.setText(note.getSubject());
             contentTextView.setText(note.getContent());
+            Glide.with(this)
+                    .load(note.getImageUrl()) // Load the image URL
+                    .into(noteImageView); // Use Glide to load the image
         }
 
         return view;

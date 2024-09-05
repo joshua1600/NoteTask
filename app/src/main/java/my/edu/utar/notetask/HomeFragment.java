@@ -113,6 +113,7 @@ public class HomeFragment extends Fragment {
     public static class Note implements Serializable {
         private String subject;
         private String content;
+        private String imageUrl;
 
         public Note() {
         } // Default constructor required for calls to DataSnapshot.getValue(Note.class)
@@ -120,6 +121,7 @@ public class HomeFragment extends Fragment {
         public Note(String subject, String content) {
             this.subject = subject;
             this.content = content;
+            this.imageUrl = imageUrl;
         }
 
         public String getSubject() {
@@ -128,6 +130,9 @@ public class HomeFragment extends Fragment {
 
         public String getContent() {
             return content;
+        }
+        public String getImageUrl() {
+            return imageUrl;
         }
     }
 }

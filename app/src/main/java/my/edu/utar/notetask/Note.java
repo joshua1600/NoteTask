@@ -9,6 +9,7 @@ public class Note implements Serializable {
     private Date createdDate;
     private long fileSize;
     private String category;
+    private String imageUrl;
 
     public Note(String subject, String content, String category) {
         this.subject = subject;
@@ -16,6 +17,7 @@ public class Note implements Serializable {
         this.createdDate = new Date();
         this.fileSize = content.length();
         this.category = category;
+        this.imageUrl = imageUrl;
     }
 
     // Getters
@@ -24,4 +26,5 @@ public class Note implements Serializable {
     public Date getCreatedDate() { return createdDate; }
     public long getFileSize() { return fileSize; }
     public String getCategory() { return category; }
+    public String getImageUrl() { return imageUrl; }
 }
