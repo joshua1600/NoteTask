@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    tools:context=".AddnoteFragment" >
 
-    <EditText
-        android:id="@+id/note_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Title"
-        android:inputType="text"
-        android:textColor="@color/black"
-        android:layout_marginTop="36dp"/>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="412dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="72dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-    <EditText
-        android:id="@+id/note_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Write something"
-        android:inputType="textMultiLine"
-        android:minLines="5"
-        android:gravity="top"
-        android:textColor="@color/black"/>
+        <Button
+            android:id="@+id/nNoteButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/circular_button"
+            android:text="New Note" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/save_note_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Note" />
-
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="419dp"
+        android:layout_height="190dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
