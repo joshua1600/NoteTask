@@ -14,7 +14,7 @@ import android.widget.Button;
 
 public class AddnoteFragment extends Fragment {
 
-    private Button newNoteButton, newTaskButton;
+    private Button newNoteButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
