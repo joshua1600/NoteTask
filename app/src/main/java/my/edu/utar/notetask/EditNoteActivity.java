@@ -79,7 +79,7 @@ public class EditNoteActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.nav_home); // Ensure you have a home icon in your drawable resources
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.nav_home);
     }
 
 
