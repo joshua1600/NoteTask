@@ -9,18 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 public class NoteFragment extends Fragment {
 
     private static final String ARG_NOTE = "note";
-    private HomeFragment.Note note; // Use the inner class Note
+    private Note note; // Use the imported Note class
 
     public NoteFragment() {
         // Required empty public constructor
     }
 
-    public static NoteFragment newInstance(HomeFragment.Note note) {
+    public static NoteFragment newInstance(Note note) {
         NoteFragment fragment = new NoteFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_NOTE, note); // Pass the note object
@@ -32,7 +30,7 @@ public class NoteFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            note = (HomeFragment.Note) getArguments().getSerializable(ARG_NOTE); // Retrieve the note object
+            note = (Note) getArguments().getSerializable(ARG_NOTE); // Retrieve the note object
         }
     }
 

@@ -2,23 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/homeFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BinFragment">
-
-    <View
-        android:id="@+id/spacerView3"
+    android:layout_height="wrap_content"
+    android:background="@color/ColorPrimary"
+    android:padding="16dp"
+    android:layout_marginBottom="86dp"
+    tools:context=".HomeFragment">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:id="@+id/title_bar_layout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/page_title"
+            android:text="Notes"
+            android:textSize="32sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
 
-    <ListView
-        android:id="@+id/notesListView"
-        android:layout_below="@id/spacerView3"
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar_layout"
+        android:id="@+id/recycler_view"/>
 
 </RelativeLayout>

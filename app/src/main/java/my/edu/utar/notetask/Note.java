@@ -10,6 +10,10 @@ public class Note implements Serializable {
     private long fileSize;
     private String category;
 
+    public Note() {
+        // Default constructor required for calls to DataSnapshot.getValue(Note.class)
+    }
+
     public Note(String subject, String content, String category) {
         this.subject = subject;
         this.content = content;
@@ -24,4 +28,11 @@ public class Note implements Serializable {
     public Date getCreatedDate() { return createdDate; }
     public long getFileSize() { return fileSize; }
     public String getCategory() { return category; }
+
+    // Setters
+    public void setSubject(String subject) { this.subject = subject; }
+    public void setContent(String content) { this.content = content; }
+    public void setCreatedDate(Date createdDate) { this.createdDate = createdDate; }
+    public void setFileSize(long fileSize) { this.fileSize = fileSize; }
+    public void setCategory(String category) { this.category = category; }
 }

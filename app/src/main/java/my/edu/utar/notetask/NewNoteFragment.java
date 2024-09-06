@@ -15,6 +15,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NewNoteFragment extends Fragment {
     private Button saveNoteBtn;
     private TextInputEditText subjectEditText, contentEditText;
@@ -46,13 +49,22 @@ public class NewNoteFragment extends Fragment {
             String userId = currentUser.getUid();
             String subject = subjectEditText.getText().toString();
             String content = contentEditText.getText().toString();
+            String category = "default"; // Replace with actual category if available
 
             // Save data to Firebase Realtime Database
             DatabaseReference notesRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("notes");
             String noteId = notesRef.push().getKey(); // Generate unique ID for the note
-            Note note = new Note(subject, content);
+            Note note = new Note(subject, content, category);
 
-            notesRef.child(noteId).setValue(note)
+            // Convert createdDate to a long timestamp
+            Map<String, Object> noteMap = new HashMap<>();
+            noteMap.put("subject", note.getSubject());
+            noteMap.put("content", note.getContent());
+            noteMap.put("createdDate", note.getCreatedDate().getTime());
+            noteMap.put("fileSize", note.getFileSize());
+            noteMap.put("category", note.getCategory());
+
+            notesRef.child(noteId).setValue(noteMap)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext(), "Note saved successfully", Toast.LENGTH_SHORT).show();
@@ -62,28 +74,6 @@ public class NewNoteFragment extends Fragment {
                     });
         } else {
             Toast.makeText(getContext(), "No user is logged in", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    // Note class to match the structure in Firebase
-    public static class Note {
-        private String subject;
-        private String content;
-
-        public Note() {
-        } // Default constructor required for calls to DataSnapshot.getValue(Note.class)
-
-        public Note(String subject, String content) {
-            this.subject = subject;
-            this.content = content;
-        }
-
-        public String getSubject() {
-            return subject;
-        }
-
-        public String getContent() {
-            return content;
         }
     }
 }
