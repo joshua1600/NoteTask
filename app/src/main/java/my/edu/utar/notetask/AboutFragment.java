@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class HelpFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_help, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 }
