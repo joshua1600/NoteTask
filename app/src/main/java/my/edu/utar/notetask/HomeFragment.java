@@ -2,6 +2,7 @@
 package my.edu.utar.notetask;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,6 @@ import java.util.List;
 import java.util.Set;
 
 public class HomeFragment extends Fragment {
-
     private RecyclerView recyclerView;
     private NotesListAdapter noteAdapter;
     private List<Note> notes = new ArrayList<>();
@@ -38,6 +38,11 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         noteAdapter = new NotesListAdapter(notes, getContext());
         recyclerView.setAdapter(noteAdapter);
+
+        // Add spacing between items
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.recycler_view_item_spacing);
+        recyclerView.addItemDecoration(new SpacingItemDecoration(spacingInPixels));
+
         retrieveNotes();
         return view;
     }
@@ -57,7 +62,9 @@ public class HomeFragment extends Fragment {
                     for (DataSnapshot noteSnapshot : dataSnapshot.getChildren()) {
                         Note note = noteSnapshot.getValue(Note.class);
                         if (note != null && !existingSubjects.contains(note.getSubject())) {
+                            note.setId(noteSnapshot.getKey());
                             existingSubjects.add(note.getSubject());
+                            existingSubjects.add(note.getContent());
                             notes.add(note);
                         }
                     }
@@ -73,5 +80,6 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getContext(), "No user is logged in.", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
+
+

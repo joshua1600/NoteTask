@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
 
         fab = findViewById(R.id.fab);
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.nav_toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.addnote) {
-                    openFragment(new AddnoteFragment());
+                    openFragment(new NewNoteFragment());
                     return true;
                 } else if (id == R.id.task) {
                     openFragment(new TaskFragment());
@@ -96,18 +96,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-//            drawerLayout.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
 
     public void openFragment(Fragment fragment){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 }

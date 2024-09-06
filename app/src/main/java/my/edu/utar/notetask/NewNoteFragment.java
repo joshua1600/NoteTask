@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +39,7 @@ public class NewNoteFragment extends Fragment {
         subjectEditText = view.findViewById(R.id.subjectEditText);
         contentEditText = view.findViewById(R.id.contentEditText);
 
+
         // Set onClickListener for save note button
         saveNoteBtn.setOnClickListener(v -> {
             String subject = subjectEditText.getText().toString();
@@ -45,6 +47,13 @@ public class NewNoteFragment extends Fragment {
 
             // Save note with subject and content only
             saveNote(subject, content);
+
+            // Get the activity and cast it to HomeActivity
+            HomeActivity activity = (HomeActivity) getActivity();
+            if (activity != null) {
+                // Call the openFragment method
+                activity.openFragment(new HomeFragment());
+            }
         });
 
         return view;

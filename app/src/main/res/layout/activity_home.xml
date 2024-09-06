@@ -10,12 +10,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/ColorPrimary">
+        android:background="@color/white">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:id="@+id/toolbar"
+            android:id="@+id/nav_toolbar"
             android:elevation="4dp"
             android:background="@color/ColorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"

@@ -1,39 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
-    android:layout_marginVertical="8dp"
-    android:backgroundTint="@color/white"
-    android:background="@drawable/rounded_corner"
-    >
+    android:orientation="vertical"
+    android:background="@drawable/list_item_border"
+    android:padding="16dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/text_view_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/noteSubjectTextView"
-        android:text="note title"
-        android:textColor="@color/black"
+        android:text="Title"
         android:textSize="18sp"
-        android:layout_marginVertical="4dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/noteContentTextView"
-        android:text="note content will be showing here"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textSize="17sp"
-        android:layout_marginVertical="4dp"/>
+        android:textStyle="bold" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/text_view_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/noteDateTextView"
-        android:text="note created date"
-        android:textSize="12sp"
-        android:gravity="right"
-        android:layout_marginVertical="4dp"/>
-
+        android:text="Content"
+        android:textSize="14sp" />
 </LinearLayout>
