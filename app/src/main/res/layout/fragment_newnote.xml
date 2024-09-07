@@ -69,7 +69,7 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:gravity="top"
-                android:hint="Enter Note Content"
+                android:hint="Write something"
                 android:maxLines="15"
                 android:minLines="10"
                 android:textColor="@color/black"

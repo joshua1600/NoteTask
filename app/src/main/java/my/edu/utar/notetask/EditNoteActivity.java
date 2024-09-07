@@ -54,7 +54,7 @@ public class EditNoteActivity extends AppCompatActivity {
                 if (s.length() > 0) {
                     editTextSubject.setHint("");
                 } else {
-                    editTextSubject.setHint("Title");
+                    editTextSubject.setHint("Edit Title");
                 }
             }
         });
@@ -71,7 +71,7 @@ public class EditNoteActivity extends AppCompatActivity {
                 if (s.length() > 0) {
                     editTextContent.setHint("");
                 } else {
-                    editTextContent.setHint("Write something");
+                    editTextContent.setHint("Edit Content");
                 }
             }
         });
