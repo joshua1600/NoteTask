@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -80,19 +81,29 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                // Register the user with Firebase Authentication
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Register.this, task -> {
                             if (task.isSuccessful()) {
-                                // Get the registered user's FirebaseUser object
                                 FirebaseUser firebaseUser = auth.getCurrentUser();
                                 if (firebaseUser != null) {
-                                    // Save additional user information to Firebase Realtime Database
-                                    String userId = firebaseUser.getUid();
-                                    saveUserInformation(userId, username, email);
+                                    // Set the display name
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(username)
+                                            .build();
 
-                                    Toast.makeText(Register.this, "Registration successful.", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Register.this, LoginActivity.class));
+                                    firebaseUser.updateProfile(profileUpdates)
+                                            .addOnCompleteListener(profileUpdateTask -> {
+                                                if (profileUpdateTask.isSuccessful()) {
+                                                    // Save additional user information to Firebase Realtime Database
+                                                    String userId = firebaseUser.getUid();
+                                                    saveUserInformation(userId, username, email);
+
+                                                    Toast.makeText(Register.this, "Registration successful.", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(Register.this, LoginActivity.class));
+                                                } else {
+                                                    Toast.makeText(Register.this, "Failed to update profile.", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
                                 }
                             } else {
                                 Toast.makeText(Register.this, "Registration failed.", Toast.LENGTH_SHORT).show();

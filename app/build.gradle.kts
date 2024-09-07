@@ -45,18 +45,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
-//    //Room (for database)
-//    implementation ("androidx.room:room-runtime:2.2.5")
-//    annotationProcessor ("androidx.room:room-compiler:2.2.5")
-//
-//    //RecyclerView
-//    implementation ("androidx. recyclerview:recyclerview:1.1.0")
-//    // Scalable Size Unit (support for different screen sizes)
-//    implementation ("com.intuit.sdp:sdp-android:1.0.6")
-//    implementation ("com.intuit.ssp:ssp-android:1.0.6")
-//    // Material Design
-//    implementation ("com-google.android material:material:1.1.0")
-//    // Rounded ImageView
-//    implementation ("com-makeramen: roundedimageview:2.3.0")
+
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+
 }

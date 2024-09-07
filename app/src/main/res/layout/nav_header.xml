@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="176dp"
-android:orientation="vertical"
-android:gravity="bottom"
-android:padding="16dp"
-android:background="@color/ColorPrimaryDark"
-android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingTop="12dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="12dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:background="@color/ColorPrimaryDark">
 
-<ImageView
-    android:id="@+id/profileImageView"
-    android:layout_width="74dp"
-    android:layout_height="72dp"
-    android:src="@drawable/profile"
-    android:contentDescription="Profile Picture" />
+    <ImageView
+        android:id="@+id/nav_user_photo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/profile"
+        android:layout_marginBottom="8dp"/>
 
-<TextView
-    android:id="@+id/usernameTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="User1600"
-    android:textColor="@color/white"
-    android:textStyle="bold"/>
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/nav_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="@string/nav_header_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-<TextView
-    android:id="@+id/emailTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="user1600@gmail.com"
-    android:textColor="@color/white"
-    android:textSize="14sp"
-    android:layout_marginBottom="16dp"/>
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/nav_user_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nav_header_subtitle" />
 
 </LinearLayout>

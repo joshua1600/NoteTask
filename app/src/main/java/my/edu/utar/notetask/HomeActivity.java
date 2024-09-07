@@ -13,17 +13,21 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 //Main menu UI
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,11 +37,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
     Toolbar toolbar;
     FloatingActionButton fab;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        firebaseAuth = firebaseAuth.getInstance();
+        currentUser = firebaseAuth.getCurrentUser();
 
         fab = findViewById(R.id.fab);
         toolbar = findViewById(R.id.nav_toolbar);
@@ -50,6 +59,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        updateNavHeader();
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setBackground(null);
@@ -112,9 +123,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         dialog.show();
     }
 
-
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -141,4 +149,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         transaction.commit();
     }
 
+    public void updateNavHeader() {
+
+        if (currentUser != null) {
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            View headerView = navigationView.getHeaderView(0);
+            TextView navUsername = headerView.findViewById(R.id.nav_username);
+            TextView navUserMail = headerView.findViewById(R.id.nav_user_mail);
+
+            navUserMail.setText(currentUser.getEmail());
+            navUsername.setText(currentUser.getDisplayName());
+        }
+    }
 }
