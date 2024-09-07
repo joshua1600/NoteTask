@@ -1,9 +1,7 @@
 package my.edu.utar.notetask;
 
-// NoteAdapter.java
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +33,15 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         Note currentNote = notes.get(position);
-        holder.textViewTitle.setText(currentNote.getSubject());
+        //Show the title and content until the maximum text length
+        String title = currentNote.getSubject();
+        String truncatedTitle = truncateContent(title);
+        holder.textViewTitle.setText(truncatedTitle);
 
         String content = currentNote.getContent();
         String truncatedContent = truncateContent(content);
         holder.textViewContent.setText(truncatedContent);
+
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, EditNoteActivity.class);
@@ -48,6 +50,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
             intent.putExtra("noteContent", currentNote.getContent());
             context.startActivity(intent);
         });
+
     }
 
     @Override

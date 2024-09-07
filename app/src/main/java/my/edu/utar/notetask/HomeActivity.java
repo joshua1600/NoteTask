@@ -2,13 +2,17 @@ package my.edu.utar.notetask;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -19,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 //Main menu UI
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -81,6 +86,35 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    //Show alert message to confirm with user before logout
+    private void showLogoutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_confirm_logout, null);
+        builder.setView(dialogView);
+
+        AlertDialog dialog = builder.create();
+
+        Button buttonCancel = dialogView.findViewById(R.id.buttonCancel);
+        Button buttonConfirm = dialogView.findViewById(R.id.buttonConfirm);
+
+        buttonCancel.setOnClickListener(v -> dialog.dismiss());
+
+        //Redirecting back to Login Page
+        buttonConfirm.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
+
+        dialog.show();
+    }
+
+
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -91,6 +125,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BinFragment()).commit();
         } else if (id == R.id.nav_info) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
+        } else if (id == R.id.nav_logout){
+            showLogoutDialog();
+            return true;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -103,4 +140,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 }
