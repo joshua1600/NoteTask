@@ -1,5 +1,9 @@
 package my.edu.utar.notetask;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,7 +64,7 @@ public class HomeFragment extends Fragment {
 
                     for (DataSnapshot noteSnapshot : dataSnapshot.getChildren()) {
                         Note note = noteSnapshot.getValue(Note.class);
-                        if (note != null && !existingSubjects.contains(note.getSubject())) {
+                        if (note != null && !note.isDeleted() && !existingSubjects.contains(note.getSubject())) {
                             note.setId(noteSnapshot.getKey());
                             existingSubjects.add(note.getSubject());
                             existingSubjects.add(note.getContent());
@@ -78,6 +83,7 @@ public class HomeFragment extends Fragment {
             Toast.makeText(getContext(), "No user is logged in.", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
 
 

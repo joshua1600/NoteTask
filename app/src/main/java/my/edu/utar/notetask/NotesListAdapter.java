@@ -5,10 +5,21 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import my.edu.utar.notetask.HomeActivity;
 import my.edu.utar.notetask.HomeFragment;
@@ -43,11 +54,15 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
         holder.textViewContent.setText(truncatedContent);
 
 
+        // Update the bookmark icon
+        holder.imageViewBookmark.setImageResource(currentNote.isBookmarked() ? R.drawable.nav_bookmark : R.drawable.add_bookmark);
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, EditNoteActivity.class);
             intent.putExtra("noteId", currentNote.getId());
             intent.putExtra("noteSubject", currentNote.getSubject());
             intent.putExtra("noteContent", currentNote.getContent());
+            intent.putExtra("noteBookmarked", currentNote.isBookmarked());
             context.startActivity(intent);
         });
 
@@ -72,11 +87,14 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
     public static class NoteViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
         private TextView textViewContent;
+        private ImageView imageViewBookmark;
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewContent = itemView.findViewById(R.id.text_view_content);
+            imageViewBookmark = itemView.findViewById(R.id.image_view_bookmark);
         }
     }
+
 }
