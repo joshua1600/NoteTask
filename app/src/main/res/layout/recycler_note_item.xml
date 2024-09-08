@@ -4,19 +4,29 @@
     android:background="@drawable/list_item_border"
     android:padding="16dp">
 
+    <!-- Existing views -->
     <ImageView
         android:id="@+id/image_view_bookmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="42dp"
+        android:layout_height="14dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/add_bookmark"/>
 
+
+    <ImageView
+        android:id="@+id/image_view_overflow"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_below="@id/image_view_bookmark"
+        android:layout_alignEnd="@id/image_view_bookmark"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_more_vert" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toStartOf="@id/image_view_bookmark">
+        android:layout_toStartOf="@id/image_view_overflow">
 
         <TextView
             android:id="@+id/text_view_title"
@@ -33,6 +43,5 @@
             android:text="Content"
             android:textSize="14sp" />
     </LinearLayout>
-
 </RelativeLayout>
 

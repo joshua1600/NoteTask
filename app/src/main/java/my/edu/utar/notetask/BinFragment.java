@@ -72,8 +72,6 @@ public class BinFragment extends Fragment {
                     Toast.makeText(getContext(), "Failed to load notes: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        } else {
-            Toast.makeText(getContext(), "No user is logged in.", Toast.LENGTH_SHORT).show();
         }
     }
 }
