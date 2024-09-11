@@ -94,18 +94,19 @@
 
 
     <!-- Password Requirements -->
+
+    <!-- Space to create a gap -->
     <TextView
         android:id="@+id/password_requirements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@color/ColorAccent"
-        android:layout_marginTop="6dp"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="12dp"
-        android:text="Create a password for your account. Your password must:\n• have a minimum of 12 characters\n• include at least one number\n• include upper and lower case letters\n• include at least one special character" />
+        android:text="Create a password for your account. Your password must:\n• have a minimum of 12 characters\n• include at least one number\n"
+        android:textColor="@color/ColorAccent"
+        android:textSize="14sp" />
 
-    <!-- Space to create a gap -->
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
