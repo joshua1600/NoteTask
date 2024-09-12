@@ -21,7 +21,7 @@
         android:layout_below="@id/image_view_bookmark"
         android:layout_alignEnd="@id/image_view_bookmark"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_more_vert" />
+        android:src="@drawable/nav_more" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +32,7 @@
             android:id="@+id/text_view_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Title"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -41,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Content"
+            android:textColor="@color/white"
             android:textSize="14sp" />
     </LinearLayout>
 </RelativeLayout>
